@@ -2,10 +2,10 @@ import { CallbackConstructorRegistry } from '@tensorflow/tfjs-layers/dist/base_c
 import React, { Component, useState } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import Practice from './pages/practice';
-// import Alphabet from './components/alphabets';
+import Alphabet from './components/alphabets';
 import Keys from './pages/keyboard';
 import Translate from './pages/EngToASL';
-// import Quiz from './pages/quiz';
+import Quiz from './pages/quiz';
 // import Login from './pages/login';
 // import Register from './pages/register';
 // import Jobs from './pages/jobs';
@@ -23,7 +23,7 @@ import Translate from './pages/EngToASL';
 // import Audio_link from './pages/transcribe';
 // import Transcript from './pages/transcript';
 // import Blogs from './pages/blog';
-// import ProgressProvider from './components/progressBar';
+import ProgressProvider from './components/progressBar';
 // import Profile from './pages/profile';
 // import Home from './pages/home';
 
@@ -47,7 +47,7 @@ class App extends Component {
         <Switch>
       
           <Route exact path='/practice/:letter' component={Practice}/>
-          {/* <Route exact path='/practice' component={Alphabet}/> */}
+          <Route exact path='/practice' component={Alphabet}/>
 
 {/*<Route exact path='/practice'   render={() => (
             <Alphabet/>
@@ -59,7 +59,7 @@ class App extends Component {
   <Route exact path='/translate'  component={Keys}/>
 <Route exact path='/translate1'  component={Translate}/>
 
-          {/* <Route exact path='/quiz' component={Quiz}/> */}
+<Route exact path='/quiz' component={Quiz}/>
           {/* <Route exact path='/speech'  component={Speech}/> */}
 
           {/* <Route exact path='/login'  component={Login}/> */}
