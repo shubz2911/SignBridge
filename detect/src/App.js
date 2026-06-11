@@ -19,7 +19,7 @@ import Register from './pages/register';
 // import Explore from './pages/explorepost';
 // import Volunteers from './pages/volunteerlist';
 // import Speech from './pages/speech';
-// import PrivateRoute from './components/privateroute';
+import PrivateRoute from './components/privateroute';
 // import Audio_link from './pages/transcribe';
 // import Transcript from './pages/transcript';
 // import Blogs from './pages/blog';
@@ -47,7 +47,7 @@ class App extends Component {
         <Switch>
       
           <Route exact path='/practice/:letter' component={Practice}/>
-          <Route exact path='/practice' component={Alphabet}/>
+          <PrivateRoute exact path='/practice' component={Alphabet}/>
 
 {/*<Route exact path='/practice'   render={() => (
             <Alphabet/>
