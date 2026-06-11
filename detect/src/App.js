@@ -6,8 +6,8 @@ import Alphabet from './components/alphabets';
 import Keys from './pages/keyboard';
 import Translate from './pages/EngToASL';
 import Quiz from './pages/quiz';
-// import Login from './pages/login';
-// import Register from './pages/register';
+import Login from './pages/login';
+import Register from './pages/register';
 // import Jobs from './pages/jobs';
 // import Volunteer from './pages/volunteer';
 // import Talk from './pages/talk';
@@ -62,8 +62,8 @@ class App extends Component {
 <Route exact path='/quiz' component={Quiz}/>
           {/* <Route exact path='/speech'  component={Speech}/> */}
 
-          {/* <Route exact path='/login'  component={Login}/> */}
-          {/* <Route exact path='/register' component={Register}/> */}
+<Route exact path='/login'  component={Login}/>
+<Route exact path='/register' component={Register}/>
 
           {/* <Route exact path='/jobs' component={Jobs}/> */}
           {/* <Route exact path='/volunteer'  component={Volunteer}/> */}
