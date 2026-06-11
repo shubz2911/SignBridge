@@ -41,7 +41,7 @@ class Login extends React.Component{
 			   
 			   headers:{'Accept': 'application/json',"Content-Type":"application/json"},
 			   body:JSON.stringify(data),
-			   
+			   credentials: 'include'
 			   })   .then(response => response.json())
 			   .then(json => {
 				this.setState({redirect:true})

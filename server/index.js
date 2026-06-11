@@ -2,7 +2,10 @@ const express = require("express");
 
 const cors = require('cors');
 
-const corsOptions = {}
+const corsOptions = {
+  origin: 'http://localhost:3000',
+  credentials: true, 
+}
 
 const PORT = process.env.PORT || 3001;
 
@@ -22,7 +25,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(bodyParser.json())
 
-app.use(cors());
+const configuredCors = cors(corsOptions);
+
+app.options('*', configuredCors);
+
+app.use(configuredCors);
 
 app.get("/api", (req, res) => {
     res.json({ message: "Hello from SignBridge server!" });
@@ -34,7 +41,7 @@ const sessionConfig={
     saveUninitialized: true,
     cookie:{
       httpOnly: true,
-      
+      sameSite: false,
       expires: Date.now()+1000*60*60*24*7,
       maxAge: 1000*60*60*24*7
     }
@@ -54,18 +61,18 @@ const sessionConfig={
   const connect = mongoose.connect(url, { useNewUrlParser: true });
 
 
-app.post('/login', passport.authenticate('local',{successRedirect:""}),(req,res)=>{
+app.post('/login', configuredCors, passport.authenticate('local',{successRedirect:""}),(req,res)=>{
   res.json({user:req.user.username});
 });
 
-app.post('/register', async (req,res)=>{
+app.post('/register', configuredCors, async (req,res)=>{
   const {email, username, password}= req.body;
   const nu = new User({email, username});
   const regdUser= await User.register(nu, password);
   res.json({user: regdUser.username});
 });
 
-app.post('/mastered', async (req,res)=>{
+app.post('/mastered', configuredCors, async (req,res)=>{
    await User.findOneAndUpdate({username: req.user.username},{$addToSet:{mastered:[req.body.mastered]}});
    let user = await User.find({username:req.user.username});
    console.log(user);
