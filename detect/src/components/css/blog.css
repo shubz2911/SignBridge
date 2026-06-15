@@ -1,0 +1,9 @@
+
+  .all-blogs{
+      padding:2% 10%;
+      display: grid;
+      grid-template-columns: auto auto;
+      grid-gap: 30px;
+      margin-bottom: 3%;
+  }
+  

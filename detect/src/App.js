@@ -8,7 +8,7 @@ import Translate from './pages/EngToASL';
 import Quiz from './pages/quiz';
 import Login from './pages/login';
 import Register from './pages/register';
-// import Jobs from './pages/jobs';
+import Jobs from './pages/jobs';
 // import Volunteer from './pages/volunteer';
 // import Talk from './pages/talk';
 // import Signs from './pages/commonsigns';
@@ -22,7 +22,7 @@ import Register from './pages/register';
 import PrivateRoute from './components/privateroute';
 // import Audio_link from './pages/transcribe';
 // import Transcript from './pages/transcript';
-// import Blogs from './pages/blog';
+import Blogs from './pages/blog';
 import ProgressProvider from './components/progressBar';
 // import Profile from './pages/profile';
 // import Home from './pages/home';
@@ -65,7 +65,7 @@ class App extends Component {
 <Route exact path='/login'  component={Login}/>
 <Route exact path='/register' component={Register}/>
 
-          {/* <Route exact path='/jobs' component={Jobs}/> */}
+<Route exact path='/jobs' component={Jobs}/>
           {/* <Route exact path='/volunteer'  component={Volunteer}/> */}
 
           {/* <Route exact path='/talk'  component={Talk}/> */}
@@ -82,7 +82,7 @@ class App extends Component {
           {/* <Route exact path='/addpost/:id' component={Addpost}/> */}
           {/* <Route exact path='/:spaceid/:postid' component={Explore}/> */}
           {/* <Route exact path='/transcribe' component={Audio_link}/> */}
-          {/* <Route exact path='/blogs' component={Blogs}/> */}
+<Route exact path='/blogs' component={Blogs}/>
           {/* <Route exact path='/profile' component={Profile}/> */}
           {/* <Route exact path='/' component={Home}/> */}
 
