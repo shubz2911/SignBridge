@@ -100,6 +100,18 @@ app.get('/blogresult', (req,res)=>{
     })
  });
 
+const Volunteer = require('./models/volunteerschema.js');
+app.post('/volunteer', configuredCors, async (req,res)=>{
+  console.log(req.body);
+  let nv= new Volunteer({username:req.user.username,full_name: req.body.full_name,email:req.body.email, reason: req.body.reason,image:req.body.image});
+  await nv.save();
+  res.json({success: true});
+});
+app.get('/getvols', async (req,res)=>{
+  let vols= await Volunteer.find({});
+  res.json({volunteers:vols});
+});
+
 app.listen(PORT, () => {
   console.log(`SignBridge Server listening on ${PORT}`);
 });
