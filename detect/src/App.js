@@ -10,7 +10,7 @@ import Login from './pages/login';
 import Register from './pages/register';
 import Jobs from './pages/jobs';
 import Volunteer from './pages/volunteer';
-// import Talk from './pages/talk';
+import Talk from './pages/talk';
 // import Signs from './pages/commonsigns';
 // import NewPostForm from './pages/newPost';
 // import Space from './pages/space';
@@ -68,7 +68,7 @@ class App extends Component {
 <Route exact path='/jobs' component={Jobs}/>
 <Route exact path='/volunteer'  component={Volunteer}/>
 
-          {/* <Route exact path='/talk'  component={Talk}/> */}
+<Route exact path='/talk'  component={Talk}/>
 
           {/* <Route exact path='/signs' component={Signs}/> */}
 
