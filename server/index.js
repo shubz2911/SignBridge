@@ -35,6 +35,10 @@ const SerpApi = require('google-search-results-nodejs')
 
 const search = new SerpApi.GoogleSearch("3d2f0c869c4835a667441651b484e51df952db85c585a102cd1e2e134a1b9ea0")
 
+app.get('/', (req, res) => {
+  res.send("Speech to text mock response");
+});
+
 app.get("/api", (req, res) => {
     res.json({ message: "Hello from SignBridge server!" });
   });

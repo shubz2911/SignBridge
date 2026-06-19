@@ -18,7 +18,7 @@ import Volunteer from './pages/volunteer';
 // import Addpost from './pages/addpost';
 // import Explore from './pages/explorepost';
 import Volunteers from './pages/volunteerlist';
-// import Speech from './pages/speech';
+import Speech from './pages/speech';
 import PrivateRoute from './components/privateroute';
 // import Audio_link from './pages/transcribe';
 // import Transcript from './pages/transcript';
@@ -60,7 +60,7 @@ class App extends Component {
 <Route exact path='/translate1'  component={Translate}/>
 
 <Route exact path='/quiz' component={Quiz}/>
-          {/* <Route exact path='/speech'  component={Speech}/> */}
+          <Route exact path='/speech'  component={Speech}/>
 
 <Route exact path='/login'  component={Login}/>
 <Route exact path='/register' component={Register}/>
