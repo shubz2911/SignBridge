@@ -127,6 +127,14 @@ app.get("/getspaces", async (req, res) => {
   res.json({ spaces });
 });
 
+const Post = require('./models/postschema.js')
+app.get("/getspace/:id", async (req, res) => {
+  console.log(req.params.id)
+  let space= await Space.findOne({_id:req.params.id});
+  let posts= await Post.find({linkedspace: space.name});
+  res.json({ space: space, posts: posts});
+});
+
 app.listen(PORT, () => {
   console.log(`SignBridge Server listening on ${PORT}`);
 });
