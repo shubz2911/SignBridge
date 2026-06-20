@@ -116,6 +116,17 @@ app.get('/getvols', async (req,res)=>{
   res.json({volunteers:vols});
 });
 
+const Space = require('./models/spaceschema.js')
+app.post('/addspace', configuredCors, async (req,res)=>{
+  let space = new Space({name:req.body.space, image: req.body.image, content: req.body.content});
+  await space.save();
+  res.json({success: true});
+})
+app.get("/getspaces", async (req, res) => {
+  let spaces= await Space.find({});
+  res.json({ spaces });
+});
+
 app.listen(PORT, () => {
   console.log(`SignBridge Server listening on ${PORT}`);
 });

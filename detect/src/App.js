@@ -14,7 +14,7 @@ import Talk from './pages/talk';
 // import Signs from './pages/commonsigns';
 // import NewPostForm from './pages/newPost';
 // import Space from './pages/space';
-// import Spaces from './pages/allspaces';
+import Spaces from './pages/allspaces';
 // import Addpost from './pages/addpost';
 // import Explore from './pages/explorepost';
 import Volunteers from './pages/volunteerlist';
@@ -76,7 +76,7 @@ class App extends Component {
 
           {/* <Route exact path='/space/:id'  component={Space}/> */}
 
-          {/* <Route exact path='/spaces' component={Spaces}/> */}
+<Route exact path='/spaces' component={Spaces}/>
 <Route exact path='/getvolunteers'  component={Volunteers}/>
           {/* <Route exact path='/transcript/:trans_id' component={Transcript}/> */}
           {/* <Route exact path='/addpost/:id' component={Addpost}/> */}
