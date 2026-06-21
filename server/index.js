@@ -135,6 +135,13 @@ app.get("/getspace/:id", async (req, res) => {
   res.json({ space: space, posts: posts});
 });
 
+app.post('/addpost/:id', configuredCors, async (req,res)=>{
+  let space= await Space.findOneAndUpdate({_id:req.params.id},{$push:{posts:[req.body.question]}});
+  let post = new Post({question:req.body.question,creator: req.user.username,linkedspace:space.name});
+  await post.save();
+  res.json({success: true});
+})
+
 app.listen(PORT, () => {
   console.log(`SignBridge Server listening on ${PORT}`);
 });
