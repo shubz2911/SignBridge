@@ -142,6 +142,16 @@ app.post('/addpost/:id', configuredCors, async (req,res)=>{
   res.json({success: true});
 })
 
+app.get("/getpost/:id", async (req,res)=>{
+  let post = await Post.findOne({_id:req.params.id});
+  res.json({post:post});
+})
+app.post('/:postid/addcomment', configuredCors, async (req,res)=>{
+  let comment= {commentor: req.user.username, content: req.body.comment}
+  await Post.findOneAndUpdate({_id:req.params.postid},{$push:{comments: [comment]}})
+  res.json({success: true});
+});
+
 app.listen(PORT, () => {
   console.log(`SignBridge Server listening on ${PORT}`);
 });
