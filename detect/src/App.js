@@ -11,7 +11,7 @@ import Register from './pages/register';
 import Jobs from './pages/jobs';
 import Volunteer from './pages/volunteer';
 import Talk from './pages/talk';
-// import Signs from './pages/commonsigns';
+import Signs from './pages/commonsigns';
 import NewPostForm from './pages/newPost';
 import Space from './pages/space';
 import Spaces from './pages/allspaces';
@@ -70,7 +70,7 @@ class App extends Component {
 
 <Route exact path='/talk'  component={Talk}/>
 
-          {/* <Route exact path='/signs' component={Signs}/> */}
+<Route exact path='/signs' component={Signs}/>
 
 <Route exact path='/newspace'  component={NewPostForm}/>
 
