@@ -35,6 +35,16 @@ const SerpApi = require('google-search-results-nodejs')
 
 const search = new SerpApi.GoogleSearch("3d2f0c869c4835a667441651b484e51df952db85c585a102cd1e2e134a1b9ea0")
 
+const axios = require("axios");
+
+const assembly = axios.create({
+  baseURL: "https://api.assemblyai.com/v2",
+  headers: {
+    authorization: "32aaa1e6edae47f9a8259d9e9369b6fe",
+    "content-type": "application/json",
+  },
+});
+
 app.get('/', (req, res) => {
   res.send("Speech to text mock response");
 });
@@ -151,6 +161,31 @@ app.post('/:postid/addcomment', configuredCors, async (req,res)=>{
   await Post.findOneAndUpdate({_id:req.params.postid},{$push:{comments: [comment]}})
   res.json({success: true});
 });
+
+app.post('/transcribe', configuredCors, (req,res)=>{
+  console.log(req.body.audio_url);
+  assembly
+  .post(`/transcript`, {
+    audio_url: req.body.audio_url
+  })
+  .then((result) => res.json({result: result.data}))
+  .catch((err) => console.error(err));
+})
+app.get('/transcript/:id', (req,res)=>{
+  assembly
+  .get(`/transcript/${req.params.id}`)
+  .then((result) => {
+    res.json({transcript: result.data.text})})
+  .catch((err) => console.error(err));
+})
+app.get("/getuser", (req,res)=>{
+  if(!req.user){
+    res.json({user:"null"});
+  }else{
+    let prog = (req.user.mastered.length*100)/26;
+    res.json({username:req.user.username, email: req.user.email,progress:prog, mastered: req.user.mastered});
+  }
+})
 
 app.listen(PORT, () => {
   console.log(`SignBridge Server listening on ${PORT}`);
