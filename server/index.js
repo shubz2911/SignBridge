@@ -1,5 +1,9 @@
 const express = require("express");
 
+const {spawn} = require('child_process');
+
+const {PythonShell} = require('python-shell');
+
 const cors = require('cors');
 
 const corsOptions = {
@@ -46,8 +50,23 @@ const assembly = axios.create({
 });
 
 app.get('/', (req, res) => {
-  res.send("Speech to text mock response");
-});
+  console.log("here");
+  var dataToSend;
+  
+  const python = spawn('python', ['app.py']);
+  
+  python.stdout.on('data', function (data) {
+   console.log('Pipe data from python script ...');
+   dataToSend = data.toString();
+  });
+ 
+  python.on('close', (code) => {
+  console.log(`child process close all stdio with code ${code}`);
+
+  res.send(dataToSend)
+  });
+  
+ })
 
 app.get("/api", (req, res) => {
     res.json({ message: "Hello from SignBridge server!" });
@@ -186,6 +205,11 @@ app.get("/getuser", (req,res)=>{
     res.json({username:req.user.username, email: req.user.email,progress:prog, mastered: req.user.mastered});
   }
 })
+
+/*PythonShell.run('app.py',function (err, result){
+  if (err) throw err;
+  res.send(result.toString())
+});*/
 
 app.listen(PORT, () => {
   console.log(`SignBridge Server listening on ${PORT}`);
