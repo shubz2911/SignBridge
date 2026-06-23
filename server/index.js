@@ -1,4 +1,5 @@
 const express = require("express");
+require('dotenv').config();
 
 const {spawn} = require('child_process');
 
@@ -44,7 +45,7 @@ const axios = require("axios");
 const assembly = axios.create({
   baseURL: "https://api.assemblyai.com/v2",
   headers: {
-    authorization: "32aaa1e6edae47f9a8259d9e9369b6fe",
+    authorization: process.env.ASSEMBLYAI_API_KEY,
     "content-type": "application/json",
   },
 });

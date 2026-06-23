@@ -12,6 +12,7 @@
     "child-process": "^1.0.2",
     "connect-flash": "^0.1.1",
     "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
     "express": "^4.17.1",
     "express-session": "^1.17.2",
     "google-search-results-nodejs": "^2.0.1",
