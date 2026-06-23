@@ -25,7 +25,7 @@ import Transcript from './pages/transcript';
 import Blogs from './pages/blog';
 import ProgressProvider from './components/progressBar';
 import Profile from './pages/profile';
-// import Home from './pages/home';
+import Home from './pages/home';
 
 
 
@@ -84,7 +84,7 @@ class App extends Component {
 <Route exact path='/transcribe' component={Audio_link}/>
 <Route exact path='/blogs' component={Blogs}/>
 <Route exact path='/profile' component={Profile}/>
-          {/* <Route exact path='/' component={Home}/> */}
+<Route exact path='/' component={Home}/>
 
 
 
